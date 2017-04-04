@@ -21,16 +21,27 @@ internal class PermutationTest {
     }
 
     @Test fun `Test permutation numbers for Lists with different sizes and different elements`() {
-        val setSizeToPermutations = mapOf(
+        val listSizeToPermutations = mapOf(
                 0 to 0L,
                 1 to 1L,
                 2 to 2L,
                 3 to 6L,
                 4 to 24L
         )
-        for ((setSize, expectedNumber) in setSizeToPermutations) {
-            val set = (1..setSize).toList()
+        for ((listSize, expectedNumber) in listSizeToPermutations) {
+            val set = (1..listSize).toList()
             assertEquals(expectedNumber, set.permutationNumber())
+        }
+    }
+
+    @Test fun `Test permutation numbers for Lists with different sizes and same elements`() {
+        val listToPermutations = mapOf(
+                listOf<Int>(1,1,1,1) to 1L,
+                listOf<Int>(1,1,2,2) to 6L,
+                listOf<Int>(1,1,1,2) to 4L
+        )
+        for ((list, expectedNumber) in listToPermutations) {
+            assertEquals(expectedNumber, list.permutationNumber())
         }
     }
 }
