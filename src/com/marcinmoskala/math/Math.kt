@@ -1,9 +1,9 @@
 package com.marcinmoskala.math
 
-fun <T> Set<T>.permutationNumber(): Int = factorial(size)
+fun <T> Set<T>.permutationNumber(): Long = factorial(size)
 
-fun factorial(i: Int): Int = (1..i).product()
+fun factorial(i: Int): Long = (1..i).product()
 
-fun Collection<Int>.product() = if(isEmpty()) 0 else fold(1) { a, n -> a * n }
+fun Collection<Int>.product(): Long = if(isEmpty()) 0L else fold(1L) { a, n -> a * n }
 
-fun IntRange.product() = if(isEmpty()) 0 else fold(1) { a, n -> a * n }
+fun IntRange.product(): Long = if(isEmpty()) 0L else fold(1L) { a, n -> a * n }
