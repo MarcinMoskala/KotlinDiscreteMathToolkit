@@ -15,9 +15,9 @@ internal class ProductTest {
     }
 
     @Test
-    fun `Product of 2 to 4 is 24`() {
-        Assertions.assertEquals(24, (2..4).product())
+    fun `Test products of different IntRanges`() {
+        val rangeToProduct = mapOf(2..4 to 24, 1..4 to 24, 3..4 to 12, 100..100 to 100)
+        for ((range, product) in rangeToProduct)
+            Assertions.assertEquals(product, range.product())
     }
-
-
 }
