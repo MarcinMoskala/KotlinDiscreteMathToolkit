@@ -34,4 +34,16 @@ internal class ProductTest {
         for ((collection, product) in collectionToProduct)
             Assertions.assertEquals(product, collection.product())
     }
+
+    @Test
+    fun `Test products of different Long Collections`() {
+        val collectionToProduct = mapOf(
+                listOf(1L,2L,3L) to 6L,
+                listOf(2L,3L) to 6L,
+                listOf(3L) to 3L,
+                listOf(10L, 10L, 10L) to 1000L
+        )
+        for ((collection, product) in collectionToProduct)
+            Assertions.assertEquals(product, collection.product())
+    }
 }
