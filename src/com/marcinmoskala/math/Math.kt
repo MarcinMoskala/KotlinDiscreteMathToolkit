@@ -1,6 +1,7 @@
 package com.marcinmoskala.math
 
-val <T> Set<T>.permutationNumber: Int get() = when {
-    size == 0 -> 0
-    else -> 1
-}
+fun <T> Set<T>.permutationNumber(): Int = (1..size).product()
+
+fun Collection<Int>.product() = if(isEmpty()) 0 else fold(1) { a, n -> a * n }
+
+fun IntRange.product() = if(isEmpty()) 0 else fold(1) { a, n -> a * n }
