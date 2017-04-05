@@ -17,4 +17,12 @@ internal class SublistsTest {
         assertEquals(listOf(listOf(1, 2), listOf(1), listOf(2), listOf()), listOf(1, 2).sublists())
         assertEquals(listOf(listOf(1, 2), listOf(1)), listOf(1, 2).sublists { it % 2 == 0 })
     }
+
+    @Test
+    fun `Sublist creation for mixed splitters and simple`() {
+        assertEquals(setOf(listOf(1, 2, 3), listOf(1, 3)), listOf(1, 2, 3).sublists { it % 2 == 0 }.toSet())
+        assertEquals(setOf(listOf(1, 2, 3, 4), listOf(1, 2, 3), listOf(1, 3, 4), listOf(1, 3)), listOf(1, 2, 3, 4).sublists { it % 2 == 0 }.toSet())
+    }
+
+
 }
