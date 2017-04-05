@@ -1,6 +1,6 @@
 package com.marcinmoskala.math
 
-fun <T> List<T>.sublists(isSplitter: (T) -> Boolean): List<List<T>> = when {
+fun <T> List<T>.sublists(isSplitter: (T) -> Boolean = { true }): List<List<T>> = when {
     size == 0 -> listOf(listOf())
     none { isSplitter(it) } -> listOf(this)
     size == 1 -> listOf(this, listOf())
