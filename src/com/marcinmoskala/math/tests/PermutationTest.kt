@@ -1,5 +1,6 @@
 package com.marcinmoskala.math.tests
 
+import com.marcinmoskala.math.allPermutations
 import com.marcinmoskala.math.permutationNumber
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -42,6 +43,17 @@ internal class PermutationTest {
         )
         for ((list, expectedNumber) in listToPermutations) {
             assertEquals(expectedNumber, list.permutationNumber())
+        }
+    }
+
+    @Test fun `Get all permutations for different elements`() {
+        val setToPermutations = mapOf(
+                setOf<Int>() to setOf<List<Int>>(),
+                setOf(1, 2) to setOf(listOf(1, 2), listOf(2, 1)),
+                setOf(1,2,3) to setOf(listOf(1, 2, 3), listOf(2, 1, 3), listOf(1, 3, 2), listOf(2, 3, 1), listOf(3, 1, 2), listOf(3, 2, 1))
+        )
+        for ((set, allExpectedPermutations) in setToPermutations) {
+            assertEquals(allExpectedPermutations, set.allPermutations())
         }
     }
 }
