@@ -24,5 +24,10 @@ internal class SublistsTest {
         assertEquals(setOf(listOf(1, 2, 3, 4), listOf(1, 2, 3), listOf(1, 3, 4), listOf(1, 3)), listOf(1, 2, 3, 4).sublists { it % 2 == 0 }.toSet())
     }
 
-
+    @Test
+    fun `Big sublists results sizes are correct`() {
+        // 10 splitters, so 2^10 = 1024 lists
+        assert((1..20).toList().sublists { it % 2 == 0 }.size == 1024)
+        assert((1..40).toList().sublists { it % 4 == 0 }.size == 1024)
+    }
 }
