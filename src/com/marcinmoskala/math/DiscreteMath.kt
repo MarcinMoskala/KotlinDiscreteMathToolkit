@@ -2,10 +2,20 @@ package com.marcinmoskala.math
 
 fun <T> Set<T>.permutationNumber(): Long = factorial(size)
 
-fun <T> Set<T>.combinationNumber(number: Int): Long = when {
-    number >= size -> 1
-    number <= 0 -> 0
-    else -> factorial(size) / (factorial(number) * factorial(size - number))
+fun <T> Set<T>.combinationNumber(combinationSize: Int): Long = when {
+    combinationSize >= size -> 1
+    combinationSize <= 0 -> 0
+    else -> factorial(size) / (factorial(combinationSize) * factorial(size - combinationSize))
+}
+
+fun <T> Set<T>.allCombinations(combinationSize: Int): Set<Set<T>> = when {
+    combinationSize <= 0 -> setOf()
+    combinationSize >= size -> setOf(toSet())
+    else -> toList()
+            .sublists { true }
+            .filter { it.size == combinationSize }
+            .map { it.toSet() }
+            .toSet()
 }
 
 fun <T> List<T>.permutationNumber(): Long = if (size < 1) 0L else factorial(size) / groupBy { it }.map { factorial(it.value.size) }.product()
