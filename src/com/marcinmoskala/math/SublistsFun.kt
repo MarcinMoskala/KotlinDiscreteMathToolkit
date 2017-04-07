@@ -4,3 +4,8 @@ fun <T> Set<T>.subsets(): Set<Set<T>> = when {
     size <= 1 -> setOf(setOf<T>()).plusElement(this)
     else -> drop(1).toSet().subsets().let { it + it.map { it + first() } }
 }
+
+fun  List<Int>.combine(): Set<List<Int>> = when {
+    isEmpty() -> setOf(emptyList())
+    else -> flatMap { listOf(this) + (this - it).combine() }.toSet()
+}
