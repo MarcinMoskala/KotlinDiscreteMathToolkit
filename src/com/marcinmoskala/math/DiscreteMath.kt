@@ -12,7 +12,7 @@ fun <T> Set<T>.allCombinations(combinationSize: Int): Set<Set<T>> = when {
     combinationSize <= 0 -> setOf()
     combinationSize >= size -> setOf(toSet())
     else -> toList()
-            .sublists { true }
+            .sublistsBySplitters { true }
             .filter { it.size == combinationSize }
             .map { it.toSet() }
             .toSet()
