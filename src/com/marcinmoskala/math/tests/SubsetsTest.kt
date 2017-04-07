@@ -1,6 +1,6 @@
 package com.marcinmoskala.math.tests
 
-import com.marcinmoskala.math.combine
+import com.marcinmoskala.math.sublists
 import com.marcinmoskala.math.subsets
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -43,6 +43,6 @@ internal class SubsetsTest {
     @Test
     fun `Compare Combine and subsets`() {
         val list = listOf(1, 2, 3, 4, 5, 6, 7, 8)
-        assertEquals(list.toSet().subsets(), list.combine().map { it.toSet() }.toSet())
+        assertEquals(list.toSet().subsets(), list.sublists().map { it.toSet() }.toSet())
     }
 }
