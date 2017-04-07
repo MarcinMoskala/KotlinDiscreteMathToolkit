@@ -21,8 +21,7 @@ internal class SubsetsTest {
                 setOf(1),
                 setOf(2),
                 setOf(3),
-                setOf()
-        )
+                setOf())
         assertEquals(set, setOf(1, 2, 3).subsets().toSet())
     }
 }
