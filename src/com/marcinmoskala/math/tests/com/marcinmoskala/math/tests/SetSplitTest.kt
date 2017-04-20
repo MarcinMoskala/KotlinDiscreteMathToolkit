@@ -4,7 +4,7 @@ import com.marcinmoskala.math.S
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class SplitFuncTest {
+internal class SetSplitTest {
 
     @Test
     fun `n elements can be only one way splitted to one or n groups`() {
