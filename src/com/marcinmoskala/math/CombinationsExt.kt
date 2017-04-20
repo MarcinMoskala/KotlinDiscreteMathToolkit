@@ -23,11 +23,12 @@ fun <T> Set<T>.combinationNumber(combinationSize: Int): Long = when {
     else -> factorial(size) / (factorial(combinationSize) * factorial(size - combinationSize))
 }
 
-fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Set<T>> = when {
-    combinationSize <= 0 -> setOf()
-    combinationSize >= size -> setOf(toSet())
-    else -> powerset()
-            .filter { it.size == combinationSize }
+fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<List<T>> = when {
+    combinationSize < 0 -> setOf()
+    combinationSize == 0 -> setOf(listOf())
+    else -> combinationsWithRepetitions(combinationSize - 1)
+            .flatMap { subset -> this.map { subset + it } }
+            .distinctBy { it.groupBy { it } }
             .toSet()
 }
 
