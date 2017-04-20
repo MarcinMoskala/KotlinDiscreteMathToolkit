@@ -32,7 +32,7 @@ fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Set<T>> = 
 }
 
 fun <T> Set<T>.combinationsWithRepetitionsNumber(combinationSize: Int): Long = when {
-    combinationSize >= size -> 1
-    combinationSize <= 0 -> 0
-    else -> factorial(size) / (factorial(combinationSize) * factorial(size - combinationSize))
+    combinationSize == 0 -> 1
+    combinationSize < 0 -> 0
+    else -> factorial(size + combinationSize - 1) / (factorial(combinationSize) * factorial(size - 1))
 }
