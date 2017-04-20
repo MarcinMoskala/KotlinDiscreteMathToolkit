@@ -23,7 +23,7 @@ internal class SetSplitTest {
     }
 
     @Test
-    fun `Stirling function is correct according to recrrence defenition`() {
+    fun `Stirling function is correct according to recurrence definition`() {
         for (n in 1..10) {
             for (k in 1..(n - 1)) {
                 assertEquals(S(n, k), S(n - 1, k - 1) + k * S(n - 1, k))

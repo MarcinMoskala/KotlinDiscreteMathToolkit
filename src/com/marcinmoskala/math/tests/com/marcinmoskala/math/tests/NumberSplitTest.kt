@@ -22,4 +22,12 @@ internal class NumberSplitTest {
         }
     }
 
+    @Test
+    fun `Number splits function is correct according to recurrence definition`() {
+        for (n in 1..10) {
+            for (k in 1..(n - 1)) {
+                assertEquals(P(n, k), (1..k).sumBy { i -> P(n - k, i) })
+            }
+        }
+    }
 }
