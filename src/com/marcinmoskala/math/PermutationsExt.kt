@@ -12,15 +12,15 @@ fun <T> Set<T>.permutationNumber(): Long = factorial(size)
 fun <T> List<T>.permutationNumber(): Long = if (size < 1) 0L else factorial(size) / groupBy { it }.map { factorial(it.value.size) }.product()
 
 /* This function returns all permutations of elements from set. These are different ways to arrange elements from this list.  */
-fun <T> Set<T>.allPermutations(): Set<List<T>> = toList().allPermutations()
+fun <T> Set<T>.permutations(): Set<List<T>> = toList().permutations()
 
 /* This function returns all permutations of elements from list. These are different ways to arrange elements from this list.  */
-fun <T> List<T>.allPermutations(): Set<List<T>> = when {
+fun <T> List<T>.permutations(): Set<List<T>> = when {
     isEmpty() -> setOf()
     size == 1 -> setOf(listOf(get(0)))
     else -> {
         val element = get(0)
-        drop(1).allPermutations()
+        drop(1).permutations()
                 .flatMap { sublist -> (0..sublist.size).map { i -> sublist.plusAt(i, element) } }
                 .toSet()
     }

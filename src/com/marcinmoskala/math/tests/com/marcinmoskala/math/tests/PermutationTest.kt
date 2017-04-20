@@ -1,6 +1,6 @@
 package com.marcinmoskala.math.tests
 
-import com.marcinmoskala.math.allPermutations
+import com.marcinmoskala.math.permutations
 import com.marcinmoskala.math.permutationNumber
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -53,12 +53,12 @@ internal class PermutationTest {
                 setOf(1, 2, 3) to setOf(listOf(1, 2, 3), listOf(2, 1, 3), listOf(1, 3, 2), listOf(2, 3, 1), listOf(3, 1, 2), listOf(3, 2, 1))
         )
         for ((set, allExpectedPermutations) in setToPermutations) {
-            assertEquals(allExpectedPermutations, set.allPermutations())
+            assertEquals(allExpectedPermutations, set.permutations())
         }
     }
 
     @Test fun `Check permutations number in allPermutations for bigger numbers`() {
         val set = (1..5).toSet()
-        assertEquals(set.permutationNumber(), set.allPermutations().size.toLong())
+        assertEquals(set.permutationNumber(), set.permutations().size.toLong())
     }
 }

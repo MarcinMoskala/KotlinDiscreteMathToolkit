@@ -1,7 +1,7 @@
 package com.marcinmoskala.math.tests
 
-import com.marcinmoskala.math.allCombinations
 import com.marcinmoskala.math.combinationNumber
+import com.marcinmoskala.math.combinations
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -33,14 +33,12 @@ internal class CombinationTest {
                 5 to setOf(setOf(1, 2, 3, 4))
         )
         for ((subsetSize, expectedCombinations) in sizeToCombinations) {
-            assertEquals(expectedCombinations, set.allCombinations(subsetSize))
+            assertEquals(expectedCombinations, set.combinations(subsetSize))
         }
     }
 
-
-
     @Test fun `Test allCombinations size and combinationsNumber correctness`() {
         val set = (1..6).toSet()
-        (1..7).forEach { i -> assertEquals(set.combinationNumber(i), set.allCombinations(i).size.toLong()) }
+        (1..7).forEach { i -> assertEquals(set.combinationNumber(i), set.combinations(i).size.toLong()) }
     }
 }
