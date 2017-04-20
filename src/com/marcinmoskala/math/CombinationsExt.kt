@@ -9,7 +9,8 @@ package com.marcinmoskala.math
  * extension function for set under this name
  */
 fun <T> Set<T>.combinations(combinationSize: Int): Set<Set<T>> = when {
-    combinationSize <= 0 -> setOf()
+    combinationSize < 0 -> setOf()
+    combinationSize == 0 -> setOf(setOf())
     combinationSize >= size -> setOf(toSet())
     else -> powerset()
             .filter { it.size == combinationSize }
@@ -17,6 +18,20 @@ fun <T> Set<T>.combinations(combinationSize: Int): Set<Set<T>> = when {
 }
 
 fun <T> Set<T>.combinationNumber(combinationSize: Int): Long = when {
+    combinationSize >= size || combinationSize == 0 -> 1
+    combinationSize < 0 -> 0
+    else -> factorial(size) / (factorial(combinationSize) * factorial(size - combinationSize))
+}
+
+fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Set<T>> = when {
+    combinationSize <= 0 -> setOf()
+    combinationSize >= size -> setOf(toSet())
+    else -> powerset()
+            .filter { it.size == combinationSize }
+            .toSet()
+}
+
+fun <T> Set<T>.combinationsWithRepetitionsNumber(combinationSize: Int): Long = when {
     combinationSize >= size -> 1
     combinationSize <= 0 -> 0
     else -> factorial(size) / (factorial(combinationSize) * factorial(size - combinationSize))

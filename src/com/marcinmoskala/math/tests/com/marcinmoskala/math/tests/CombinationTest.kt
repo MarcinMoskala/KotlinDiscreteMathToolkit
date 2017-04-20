@@ -10,7 +10,7 @@ internal class CombinationTest {
     @Test fun `Test combinationsNumber for Sets with different sizes`() {
         val set = setOf(1, 2, 3, 4)
         val subsetSizeToCombinationNumber = mapOf(
-                0 to 0L,
+                0 to 1L,
                 1 to 4L,
                 2 to 6L,
                 3 to 4L,
@@ -22,10 +22,10 @@ internal class CombinationTest {
         }
     }
 
-    @Test fun `Test allCombinations for Sets with different sizes`() {
+    @Test fun `Test combinations for Sets with different sizes`() {
         val set = setOf(1, 2, 3, 4)
         val sizeToCombinations = mapOf(
-                0 to setOf<Set<Int>>(),
+                0 to setOf(setOf()),
                 1 to setOf(setOf(1), setOf(2), setOf(3), setOf(4)),
                 2 to setOf(setOf(1, 2), setOf(2, 3), setOf(3, 4), setOf(1, 3), setOf(2, 4), setOf(1, 4)),
                 3 to setOf(setOf(1, 2, 3), setOf(1, 2, 4), setOf(1, 3, 4), setOf(2, 3, 4)),
@@ -37,7 +37,7 @@ internal class CombinationTest {
         }
     }
 
-    @Test fun `Test allCombinations size and combinationsNumber correctness`() {
+    @Test fun `Test combinations size and combinationsNumber correctness`() {
         val set = (1..6).toSet()
         (1..7).forEach { i -> assertEquals(set.combinationNumber(i), set.combinations(i).size.toLong()) }
     }
