@@ -13,4 +13,12 @@ internal class SplitFuncTest {
             assertEquals(1, S(n, n))
         }
     }
+
+    @Test
+    fun `For 0 splits, Stirling function is returning 1 for 0 and 0 otherwise`() {
+        assertEquals(1, S(0, 0))
+        for(n in 1..100) {
+            assertEquals(0, S(n, 0))
+        }
+    }
 }
