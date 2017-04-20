@@ -1,6 +1,8 @@
 package com.marcinmoskala.math.tests
 
+import com.marcinmoskala.math.pow
 import com.marcinmoskala.math.powerset
+import com.marcinmoskala.math.powersetSize
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -29,11 +31,9 @@ internal class PowersetTest {
     fun `Size of n element set powerset is 2^n`() {
         for(n in 1..6) {
             val set = (1..n).toSet()
-            assertEquals(pow(2, n), set.powerset().size)
+            val size = pow(2, n)
+            assertEquals(size, set.powerset().size)
+            assertEquals(size, set.powersetSize())
         }
-    }
-
-    fun pow(num: Int, power: Int): Int {
-        return Math.pow(num.toDouble(), power.toDouble()).toInt()
     }
 }
