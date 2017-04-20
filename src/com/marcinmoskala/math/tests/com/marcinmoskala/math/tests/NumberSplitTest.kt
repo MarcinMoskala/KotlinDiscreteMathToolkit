@@ -30,4 +30,12 @@ internal class NumberSplitTest {
             }
         }
     }
+
+    @Test
+    fun `Simple number splits examples are calculated correctly`() {
+        assertEquals(3, P(7, 4))
+        assertEquals(11, P(11, 4))
+        assertEquals(5, P(9, 5))
+        assertEquals(7, P(13, 8))
+    }
 }
