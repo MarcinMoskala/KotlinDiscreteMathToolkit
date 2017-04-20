@@ -2,13 +2,14 @@ package com.marcinmoskala.math.tests
 
 import com.marcinmoskala.math.product
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class ProductTest {
 
     @Test
     fun `Product of empty IntRange is 0`() {
-        Assertions.assertEquals(0, (1..0).product())
+        assertEquals(0, (1..0).product())
     }
 
     @Test
@@ -20,7 +21,7 @@ internal class ProductTest {
                 100..100 to 100L
         )
         for ((range, product) in rangeToProduct)
-            Assertions.assertEquals(product, range.product())
+            assertEquals(product, range.product())
     }
 
     @Test
@@ -32,7 +33,7 @@ internal class ProductTest {
                 listOf(10, 10, 10) to 1000L
         )
         for ((collection, product) in collectionToProduct)
-            Assertions.assertEquals(product, collection.product())
+            assertEquals(product, collection.product())
     }
 
     @Test
@@ -44,6 +45,6 @@ internal class ProductTest {
                 listOf(10L, 10L, 10L) to 1000L
         )
         for ((collection, product) in collectionToProduct)
-            Assertions.assertEquals(product, collection.product())
+            assertEquals(product, collection.product())
     }
 }
