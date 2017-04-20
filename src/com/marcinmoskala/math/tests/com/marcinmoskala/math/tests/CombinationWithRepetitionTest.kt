@@ -24,10 +24,10 @@ internal class CombinationWithRepetitionTest {
 
     @Test fun `Simple combinationsWithRepetitions test`() {
         val set = setOf(1, 2, 3)
-        val sizeToCombinations = mapOf(
-                0 to setOf(listOf()),
-                1 to setOf(listOf(1), listOf(2), listOf(3)),
-                2 to setOf(listOf(1, 2), listOf(2, 3), listOf(1, 3), listOf(1, 1), listOf(2, 2), listOf(3, 3))
+        val sizeToCombinations = mapOf<Int, Set<Map<Int, Int>>>(
+                0 to setOf(mapOf<Int, Int>()),
+                1 to setOf(mapOf(1 to 1), mapOf(2 to 1), mapOf(3 to 1)),
+                2 to setOf(mapOf(1 to 1, 2 to 1), mapOf(2 to 1, 3 to 1), mapOf(1 to 1, 3 to 1), mapOf(1 to 2), mapOf(2 to 2), mapOf(3 to 2))
         )
         for ((subsetSize, expectedCombinations) in sizeToCombinations) {
             assertEquals(expectedCombinations, set.combinationsWithRepetitions(subsetSize))
