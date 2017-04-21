@@ -24,3 +24,25 @@ setOf(1, 2, 3, 4).combinationsWithRepetitionsNumber(2) // 10
 ```
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/CombinationTest.kt) and [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/CombinationWithRepetitionTest.kt)
+
+# Factorial
+
+```kotlin
+factorial(3) // 6L
+factorial(10) // 3628800L
+factorial(20) // 2432902008176640000L
+```
+
+# Numbers divisible and non-divisible by
+
+```kotlin
+(1..1000).countNonDivisiveBy(2) // 500
+(1..1000).countNonDivisiveBy(3) // 777
+(1..1000).countNonDivisiveBy(2, 6, 13) // 462
+(1..1000).countNonDivisiveBy(3, 7, 11) // 520
+
+(1..1000).countDivisiveBy(2) // 500
+(1..1000).countDivisiveBy(3) // 333
+(1..1000).countDivisiveBy(2, 6, 13) // 538
+(1..1000).countDivisiveBy(3, 7, 11) // 480
+```
