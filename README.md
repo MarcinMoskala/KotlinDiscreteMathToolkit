@@ -32,8 +32,18 @@ Powerset of any set S is the set of all subsets of S, including the empty set an
 setOf(1, 2, 3).powerset() // {{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}
 setOf(1, 2, 3).powersetSize() // 8
 ```
+# Product
+Product is the result of multiplying. 
+
+```kotlin
+(3..4).product() // 12
+listOf(10, 10, 10).product() // 1000
+```
+
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/ProductTest.kt).
 
 # Factorial
+Factorian of n (n!) is a product of all positive integers less than or equal to n. 
 
 ```kotlin
 factorial(3) // 6L
