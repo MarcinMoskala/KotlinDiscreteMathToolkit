@@ -66,3 +66,30 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 (1..1000).countDivisiveBy(3, 7, 11) // 480
 ```
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumbersDivisibleTest.kt).
+
+# Splits of sets and numbers
+In Descrete Math there are two functions used to count number of splits:
+S(n, k) - Stirling function - number of splits of n different elements to k groups
+P(n, k) - number of splits of n identical elements to k groups
+
+```kotlin
+S(n, 1) // 1
+S(n, n) // 1
+S(3, 2) // 3
+S(4, 2) // 7
+S(5, 3) // 25
+S(7, 4) // 350
+```
+
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/SetSplitTest.kt)
+
+```kotlin
+P(n, 1) // 1
+P(n, n) // 1
+P(7, 4) // 3
+P(11, 4) // 11
+P(9, 5) // 5
+P(13, 8) // 7
+```
+
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumberSplitTest.kt)
