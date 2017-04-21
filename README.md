@@ -25,6 +25,14 @@ setOf(1, 2, 3, 4).combinationsWithRepetitionsNumber(2) // 10
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/CombinationTest.kt) and [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/CombinationWithRepetitionTest.kt)
 
+# Powerset
+Powerset of any set S is the set of all subsets of S, including the empty set and S itself.
+
+```kotlin
+setOf(1, 2, 3).powerset() // {{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}
+setOf(1, 2, 3).powersetSize() // 8
+```
+
 # Factorial
 
 ```kotlin
@@ -32,6 +40,7 @@ factorial(3) // 6L
 factorial(10) // 3628800L
 factorial(20) // 2432902008176640000L
 ```
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/FactorialTest.kt).
 
 # Numbers divisible and non-divisible by
 
@@ -46,3 +55,4 @@ factorial(20) // 2432902008176640000L
 (1..1000).countDivisiveBy(2, 6, 13) // 538
 (1..1000).countDivisiveBy(3, 7, 11) // 480
 ```
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumbersDivisibleTest.kt).
