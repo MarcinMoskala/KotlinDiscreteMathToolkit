@@ -5,9 +5,9 @@ Set of extensions for Kotlin that provides Discrete Math functionalities as an K
 
 ```kotlin
 setOf(1, 2, 3).permutations() // {[1, 2, 3], [2, 1, 3], [3, 2, 1], [1, 3, 2], [2, 3, 1], [3, 1, 2]}
-setOf(1, 2, 3).permutationNumber() // 6
+setOf(1, 2, 3).permutationsNumber() // 6
 listOf(1, 2, 2).permutations() // {[1, 2, 2], [2, 1, 2], [2, 2, 1]}
-listOf(1, 2, 2).permutationNumber() // 3
+listOf(1, 2, 2).permutationsNumber() // 3
 ```
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/PermutationTest.kt)
@@ -46,9 +46,9 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 Factorian of n (n!) is a product of all positive integers less than or equal to n. 
 
 ```kotlin
-factorial(3) // 6L
-factorial(10) // 3628800L
-factorial(20) // 2432902008176640000L
+3.factorial() // 6L
+10.factorial() // 3628800L
+20.factorial() // 2432902008176640000L
 ```
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/FactorialTest.kt).
 
@@ -73,23 +73,24 @@ S(n, k) - Stirling function - number of splits of n different elements to k grou
 P(n, k) - number of splits of n identical elements to k groups
 
 ```kotlin
-S(n, 1) // 1
-S(n, n) // 1
-S(3, 2) // 3
-S(4, 2) // 7
-S(5, 3) // 25
-S(7, 4) // 350
+(1..n).toSet().splitsNumber(1) // 1
+(1..n).toSet().splitsNumber(n) // 1
+(1..3).toSet().splitsNumber(2) // 3
+(1..4).toSet().splitsNumber(2) // 7
+(1..5).toSet().splitsNumber(3) // 25
+(1..7).toSet().splitsNumber(4) // 350
+setOf(1, 2, 3).splits(2) // {{{1, 2}, {3}},{{1, 3}, {2}},{{3, 2}, {1}}}
 ```
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/SetSplitTest.kt)
 
 ```kotlin
-P(n, 1) // 1
-P(n, n) // 1
-P(7, 4) // 3
-P(11, 4) // 11
-P(9, 5) // 5
-P(13, 8) // 7
+n.splitsNumber(1) // 1
+n.splitsNumber(n) // 1
+7.splitsNumber(4) // 3
+11.splitsNumber(4) // 11
+9.splitsNumber(5) // 5
+13.splitsNumber(8) // 7
 ```
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumberSplitTest.kt)
