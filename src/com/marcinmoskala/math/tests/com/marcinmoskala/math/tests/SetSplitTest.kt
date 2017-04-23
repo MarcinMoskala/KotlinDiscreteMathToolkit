@@ -55,9 +55,6 @@ internal class SetSplitTest {
 
     @Test
     fun `Split to 1 is returning only base set`() {
-        for(i in 1..10) {
-            val set = set(i)
-            assertEquals(setOf(set), set.splits(1))
-        }
+        (1..10).map { set(it) }.forEach { assertEquals(setOf(it), it.splits(1)) }
     }
 }
