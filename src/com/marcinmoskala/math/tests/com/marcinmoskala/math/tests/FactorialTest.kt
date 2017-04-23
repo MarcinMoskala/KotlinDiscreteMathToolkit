@@ -17,8 +17,8 @@ internal class FactorialTest {
                 15 to 1307674368000L,
                 20 to 2432902008176640000L
         )
-        for ((i, factorial) in numberWithFactorial) {
-            assertEquals(factorial, factorial(i))
+        for ((i, factorialResult) in numberWithFactorial) {
+            assertEquals(factorialResult, i.factorial())
         }
     }
 }

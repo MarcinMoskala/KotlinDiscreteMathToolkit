@@ -1,7 +1,7 @@
 package com.marcinmoskala.math.tests
 
-import com.marcinmoskala.math.permutations
 import com.marcinmoskala.math.permutationNumber
+import com.marcinmoskala.math.permutations
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -37,9 +37,9 @@ internal class PermutationTest {
 
     @Test fun `Test permutation numbers for Lists with different sizes and same elements`() {
         val listToPermutations = mapOf(
-                listOf<Int>(1, 1, 1, 1) to 1L,
-                listOf<Int>(1, 1, 2, 2) to 6L,
-                listOf<Int>(1, 1, 1, 2) to 4L
+                listOf(1, 1, 1, 1) to 1L,
+                listOf(1, 1, 2, 2) to 6L,
+                listOf(1, 1, 1, 2) to 4L
         )
         for ((list, expectedNumber) in listToPermutations) {
             assertEquals(expectedNumber, list.permutationNumber())

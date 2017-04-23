@@ -5,4 +5,5 @@ fun <T> Collection<T>.powerset(): Set<Set<T>> = when {
     else -> drop(1).toSet().powerset().let { it + it.map { it + first() } }
 }
 
-fun <T> Collection<T>.powersetSize(): Int = pow(2, size)
+val <T> Collection<T>.powersetSize: Int
+    get() = 2.pow(size)

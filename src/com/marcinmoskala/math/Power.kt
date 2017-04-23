@@ -1,5 +1,9 @@
 package com.marcinmoskala.math
 
-fun pow(num: Int, power: Int): Int {
-    return Math.pow(num.toDouble(), power.toDouble()).toInt()
+fun Int.pow(power: Int): Int {
+    return Math.pow(this.toDouble(), power.toDouble()).toInt()
+}
+
+fun Int.pow(power: Double): Int {
+    return Math.pow(this.toDouble(), power).toInt()
 }

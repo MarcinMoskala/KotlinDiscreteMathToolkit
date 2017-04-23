@@ -1,3 +1,3 @@
 package com.marcinmoskala.math
 
-fun factorial(i: Int): Long = (1..i).product()
+fun Int.factorial(): Long = (1..this).product()

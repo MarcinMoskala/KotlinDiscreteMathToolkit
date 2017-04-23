@@ -17,10 +17,10 @@ fun <T> Set<T>.combinations(combinationSize: Int): Set<Set<T>> = when {
             .toSet()
 }
 
-fun <T> Set<T>.combinationNumber(combinationSize: Int): Long = when {
+fun <T> Set<T>.combinationsNumber(combinationSize: Int): Long = when {
     combinationSize >= size || combinationSize == 0 -> 1
     combinationSize < 0 -> 0
-    else -> factorial(size) / (factorial(combinationSize) * factorial(size - combinationSize))
+    else -> size.factorial() / (combinationSize.factorial() * (size - combinationSize).factorial())
 }
 
 fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int>> = when {
@@ -34,5 +34,5 @@ fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int
 fun <T> Set<T>.combinationsWithRepetitionsNumber(combinationSize: Int): Long = when {
     combinationSize == 0 -> 1
     combinationSize < 0 -> 0
-    else -> factorial(size + combinationSize - 1) / (factorial(combinationSize) * factorial(size - 1))
+    else -> (size + combinationSize - 1).factorial() / (combinationSize.factorial() * (size - 1).factorial())
 }

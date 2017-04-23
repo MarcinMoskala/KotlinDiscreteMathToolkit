@@ -31,9 +31,9 @@ internal class PowersetTest {
     fun `Size of n element set powerset is 2^n`() {
         for(n in 1..6) {
             val set = (1..n).toSet()
-            val size = pow(2, n)
+            val size = 2.pow(n)
             assertEquals(size, set.powerset().size)
-            assertEquals(size, set.powersetSize())
+            assertEquals(size, set.powersetSize)
         }
     }
 }
