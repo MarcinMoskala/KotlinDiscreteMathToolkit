@@ -1,17 +1,17 @@
 package com.marcinmoskala.math
 
-// S(n, k) - Stirling function - number of splits of n different elements to k groups
-fun S(elements: Int, parts: Int): Int = when {
-    parts == 0 -> if (elements == 0) 1 else 0
-    parts == 1 || parts == elements -> 1
-    parts > elements -> 0
-    else -> S(elements - 1, parts - 1) + parts * S(elements - 1, parts)
+// Stirling function - number of splits of n different elements to k groups
+fun <T> Set<T>.splitsNumber(groupsNum: Int): Int = when {
+    groupsNum == 0 -> if (isEmpty()) 1 else 0
+    groupsNum == 1 || groupsNum == size -> 1
+    groupsNum > size -> 0
+    else -> (1..(size - 1)).toSet().splitsNumber(groupsNum - 1) + groupsNum * (1..(size - 1)).toSet().splitsNumber(groupsNum)
 }
 
-// P(n, k) - number of splits of n identical elements to k groups
-fun P(elements: Int, parts: Int): Int = when {
-    parts == 0 -> if (elements == 0) 1 else 0
-    parts == 1 || parts == elements -> 1
-    parts > elements -> 0
-    else -> (1..parts).sumBy { i -> P(elements - parts, i) }
+// Number of splits of n identical elements to k groups
+fun Int.splitsNumber(groupsNum: Int): Int = when {
+    groupsNum == 0 -> if (this == 0) 1 else 0
+    groupsNum == 1 || groupsNum == this -> 1
+    groupsNum > this -> 0
+    else -> (1..groupsNum).sumBy { i -> (this - groupsNum).splitsNumber(i) }
 }
