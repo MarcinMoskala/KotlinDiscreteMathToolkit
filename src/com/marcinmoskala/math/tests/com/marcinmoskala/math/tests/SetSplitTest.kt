@@ -55,6 +55,11 @@ internal class SetSplitTest {
 
     @Test
     fun `Split to 1 is returning only base set`() {
-        (1..10).map { set(it) }.forEach { assertEquals(setOf(it), it.splits(1)) }
+        (1..10).map { set(it) }.forEach { s -> assertEquals(setOf(setOf(s)), s.splits(1)) }
+    }
+
+    @Test
+    fun `Split to set size is returning set with each element separated`() {
+        (1..10).map { set(it) }.forEach { s -> assertEquals(setOf(s.map { setOf(it) }.toSet()), s.splits(s.size)) }
     }
 }

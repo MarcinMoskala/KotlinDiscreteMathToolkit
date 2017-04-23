@@ -8,9 +8,11 @@ fun <T> Set<T>.splitsNumber(groupsNum: Int): Int = when {
     else -> (1..(size - 1)).toSet().splitsNumber(groupsNum - 1) + groupsNum * (1..(size - 1)).toSet().splitsNumber(groupsNum)
 }
 
-fun <T> Set<T>.splits(groupsNum: Int): Set<Set<T>> = when {
+// Takes set of elements and returns set of splits and each of them is set of sets
+fun <T> Set<T>.splits(groupsNum: Int): Set<Set<Set<T>>> = when {
     groupsNum ==  0 -> if(isEmpty()) setOf(emptySet()) else emptySet()
-    groupsNum == 1 -> setOf(this)
+    groupsNum == 1 -> setOf(setOf(this))
+    groupsNum == size -> setOf(this.map { setOf(it) }.toSet())
     else -> setOf()
 }
 
