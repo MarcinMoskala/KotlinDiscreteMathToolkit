@@ -10,10 +10,17 @@ fun <T> Set<T>.splitsNumber(groupsNum: Int): Int = when {
 
 // Takes set of elements and returns set of splits and each of them is set of sets
 fun <T> Set<T>.splits(groupsNum: Int): Set<Set<Set<T>>> = when {
-    groupsNum ==  0 -> if(isEmpty()) setOf(emptySet()) else emptySet()
+    groupsNum == 0 -> if (isEmpty()) setOf(emptySet()) else emptySet()
     groupsNum == 1 -> setOf(setOf(this))
     groupsNum == size -> setOf(this.map { setOf(it) }.toSet())
-    else -> setOf()
+    groupsNum > size -> emptySet()
+    else -> setOf<Set<Set<T>>>()
+            .plus(this.minusElement(first())  // Element is alone in the group
+                    .splits(groupsNum - 1)
+                    .map { it.plusElement(setOf(first())) }) // We are adding group with one element
+            .plus(this.minusElement(first())  // Element is not alone in the group
+                    .splits(groupsNum)
+                    .flatMap { split -> split.map { group -> split.minusElement(group).plusElement(group + first()) } }) // We are adding element to different groups
 }
 
 // Number of splits of n identical elements to k groups

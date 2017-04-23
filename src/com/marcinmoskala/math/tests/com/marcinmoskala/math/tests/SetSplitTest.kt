@@ -50,7 +50,7 @@ internal class SetSplitTest {
     @Test
     fun `There is no splits to 0, except empty set`() {
         assertEquals(setOf(emptySet<Int>()), set(0).splits(0))
-        for(n in 1..100) assertEquals(emptySet<Set<Int>>(), set(n).splits(0))
+        for (n in 1..100) assertEquals(emptySet<Set<Int>>(), set(n).splits(0))
     }
 
     @Test
@@ -61,5 +61,10 @@ internal class SetSplitTest {
     @Test
     fun `Split to set size is returning set with each element separated`() {
         (1..10).map { set(it) }.forEach { s -> assertEquals(setOf(s.map { setOf(it) }.toSet()), s.splits(s.size)) }
+    }
+
+    @Test
+    fun `Simple set split is correct`() {
+        assertEquals(setOf(setOf(setOf(1, 2), setOf(3)), setOf(setOf(1, 3), setOf(2)), setOf(setOf(3, 2), setOf(1))), setOf(1, 2, 3).splits(2))
     }
 }
