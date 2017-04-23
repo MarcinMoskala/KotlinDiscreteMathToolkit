@@ -6,10 +6,10 @@ package com.marcinmoskala.math
  */
 
 /* This function returns number of all permutations of elements from set. It is equal to n! where n is size of set. */
-fun <T> Set<T>.permutationNumber(): Long = factorial(size)
+fun <T> Set<T>.permutationNumber(): Long = size.factorial()
 
 /* This function returns number of all permutations of elements from list. It is equal to n! / (n1! * n2! * ...) where n1, n2... are numbers elements that are the same. */
-fun <T> List<T>.permutationNumber(): Long = if (size < 1) 0L else factorial(size) / groupBy { it }.map { factorial(it.value.size) }.product()
+fun <T> List<T>.permutationNumber(): Long = if (size < 1) 0L else size.factorial() / groupBy { it }.map { it.value.size.factorial() }.product()
 
 /* This function returns all permutations of elements from set. These are different ways to arrange elements from this list.  */
 fun <T> Set<T>.permutations(): Set<List<T>> = toList().permutations()
