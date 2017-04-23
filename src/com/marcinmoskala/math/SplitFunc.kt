@@ -15,13 +15,19 @@ fun <T> Set<T>.splits(groupsNum: Int): Set<Set<Set<T>>> = when {
     groupsNum == size -> setOf(this.map { setOf(it) }.toSet())
     groupsNum > size -> emptySet()
     else -> setOf<Set<Set<T>>>()
-            .plus(this.minusElement(first())  // Element is alone in the group
-                    .splits(groupsNum - 1)
-                    .map { it.plusElement(setOf(first())) }) // We are adding group with one element
-            .plus(this.minusElement(first())  // Element is not alone in the group
-                    .splits(groupsNum)
-                    .flatMap { split -> split.map { group -> split.minusElement(group).plusElement(group + first()) } }) // We are adding element to different groups
+            .plus(splitsWhereFirstIsAlone(groupsNum))
+            .plus(splitsForFirstIsInAllGroups(groupsNum))
 }
+
+private fun <T> Set<T>.splitsWhereFirstIsAlone(groupsNum: Int): List<Set<Set<T>>> = this
+        .minusElement(first())
+        .splits(groupsNum - 1)
+        .map { it.plusElement(setOf(first())) }
+
+private fun <T> Set<T>.splitsForFirstIsInAllGroups(groupsNum: Int): List<Set<Set<T>>> = this
+        .minusElement(first())
+        .splits(groupsNum)
+        .flatMap { split -> split.map { group -> split.minusElement(group).plusElement(group + first()) } }
 
 // Number of splits of n identical elements to k groups
 fun Int.splitsNumber(groupsNum: Int): Int = when {

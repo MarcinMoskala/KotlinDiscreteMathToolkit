@@ -67,4 +67,12 @@ internal class SetSplitTest {
     fun `Simple set split is correct`() {
         assertEquals(setOf(setOf(setOf(1, 2), setOf(3)), setOf(setOf(1, 3), setOf(2)), setOf(setOf(3, 2), setOf(1))), setOf(1, 2, 3).splits(2))
     }
+
+    @Test
+    fun `Splits size and splitsNumber matches`() {
+        for(i in 1..5) for(j in 1..5) {
+            val s = set(i)
+            assertEquals(s.splitsNumber(j), s.splits(j).size)
+        }
+    }
 }
