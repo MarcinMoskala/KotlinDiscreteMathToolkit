@@ -28,11 +28,3 @@ private fun <T> Set<T>.splitsForFirstIsInAllGroups(groupsNum: Int): List<Set<Set
         .minusElement(first())
         .splits(groupsNum)
         .flatMap { split -> split.map { group -> split.minusElement(group).plusElement(group + first()) } }
-
-// Number of splits of n identical elements to k groups
-fun Int.splitsNumber(groupsNum: Int): Int = when {
-    groupsNum == 0 -> if (this == 0) 1 else 0
-    groupsNum == 1 || groupsNum == this -> 1
-    groupsNum > this -> 0
-    else -> (1..groupsNum).sumBy { i -> (this - groupsNum).splitsNumber(i) }
-}
