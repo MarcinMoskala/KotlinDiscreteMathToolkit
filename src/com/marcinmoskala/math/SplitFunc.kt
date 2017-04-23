@@ -8,6 +8,12 @@ fun <T> Set<T>.splitsNumber(groupsNum: Int): Int = when {
     else -> (1..(size - 1)).toSet().splitsNumber(groupsNum - 1) + groupsNum * (1..(size - 1)).toSet().splitsNumber(groupsNum)
 }
 
+fun <T> Set<T>.splits(groupsNum: Int): Set<Set<T>> = when {
+    groupsNum ==  0 -> if(isEmpty()) setOf(emptySet()) else emptySet()
+    groupsNum == 1 -> setOf(this)
+    else -> setOf()
+}
+
 // Number of splits of n identical elements to k groups
 fun Int.splitsNumber(groupsNum: Int): Int = when {
     groupsNum == 0 -> if (this == 0) 1 else 0

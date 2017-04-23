@@ -1,5 +1,6 @@
 package com.marcinmoskala.math.tests
 
+import com.marcinmoskala.math.splits
 import com.marcinmoskala.math.splitsNumber
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -37,12 +38,26 @@ internal class SetSplitTest {
     }
 
     @Test
-    fun `Simple set splits examples are calculated correctly`() {
+    fun `Simple set splits number for examples are calculated correctly`() {
         assertEquals(1, set(3).splitsNumber(1))
         assertEquals(3, set(3).splitsNumber(2))
         assertEquals(7, set(4).splitsNumber(2))
         assertEquals(25, set(5).splitsNumber(3))
         assertEquals(140, set(7).splitsNumber(5))
         assertEquals(350, set(7).splitsNumber(4))
+    }
+
+    @Test
+    fun `There is no splits to 0, except empty set`() {
+        assertEquals(setOf(emptySet<Int>()), set(0).splits(0))
+        for(n in 1..100) assertEquals(emptySet<Set<Int>>(), set(n).splits(0))
+    }
+
+    @Test
+    fun `Split to 1 is returning only base set`() {
+        for(i in 1..10) {
+            val set = set(i)
+            assertEquals(setOf(set), set.splits(1))
+        }
     }
 }
