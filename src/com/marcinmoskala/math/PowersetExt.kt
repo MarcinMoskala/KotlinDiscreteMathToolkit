@@ -1,7 +1,7 @@
 package com.marcinmoskala.math
 
 fun <T> Collection<T>.powerset(): Set<Set<T>> = when {
-    size <= 1 -> setOf(setOf<T>()).plusElement(this.toSet())
+    size <= 1 -> setOf(setOf(), this.toSet())
     else -> drop(1).toSet().powerset().let { it + it.map { it + first() } }
 }
 
