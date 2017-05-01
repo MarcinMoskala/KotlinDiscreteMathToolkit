@@ -1,3 +1,6 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
 buildscript {
     ext.kotlin_version = '1.1.0'
 
@@ -10,98 +13,53 @@ buildscript {
     }
 }
 
-plugins {
-    id "com.jfrog.bintray" version "1.7"
+dependencies  {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
-group = 'com.marcinmoskala.math'
-version = currentVersion
+group = " com.marcinmoskala.math"
+archivesBaseName = "KotlinDiscreteMathToolkit"
+version = "1.0"
 
-allprojects {
+uploadArchives {
     repositories {
-        jcenter()
-    }
-    apply plugin: 'maven'
-    apply plugin: 'maven-publish'
-    apply plugin: 'java'
-    apply plugin: 'kotlin'
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-def pomConfig = {
-    licenses {
-        license {
-            name "The Apache Software License, Version 2.0"
-            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
-            distribution "repo"
-        }
-    }
-    developers {
-        developer {
-            id "MarcinMoskala"
-            name "Marcin Moskala"
-            email "marcinmoskala@gmail.com"
-        }
-    }
-}
-
-publishing {
-    publications {
-        MyPublication(MavenPublication) {
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            groupId 'com.marcinmoskala'
-            artifactId 'DiscreteMathToolkit'
-            version '1.0'
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('description', 'Set of extensions for Kotlin that provides Discrete math functionalities.')
-                root.appendNode('name', 'DiscreteMathToolkit')
-                root.appendNode('url', 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit')
-                root.children().last() + pomConfig
+        mavenDeployer {
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
             }
-        }
-    }
-}
 
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    publications = ['MyPublication']
-    pkg {
-        repo = 'DiscreteMathToolkit'
-        name = 'DiscreteMathToolkit'
-        userOrg = user
-        li 9censes = ['Apache-2.0']
-        vcsUrl = 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
-        labels = ['Kotlin', 'Math']
-        publicDownloadNumbers = true
-        version {
-            name = '1.0-Final'
-            desc = 'Version 1.0 final'
-            vcsTag = '1.0'
-        }
-    }
-}
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.4'
-}
+            pom.project {
+                name 'KotlinDiscreteMathToolkit'
+                packaging 'jar'
+                // optionally artifactId can be defined here
+                description 'Set of extensions for Kotlin that provides Discrete Math functionalities as an Kotlin extension functions.'
+                url 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
 
-sourceSets {
-    main {
-        resources {
-            srcDirs = ["src"]
+                scm {
+                    connection 'scm:https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+                    developerConnection 'scm:https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+                    url 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'MarcinMoskala'
+                        name 'Marcin Moskala'
+                        email 'marcinmoskala@gmail.com'
+                    }
+                }
+            }
         }
     }
 }
