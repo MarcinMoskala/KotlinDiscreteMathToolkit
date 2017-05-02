@@ -1,5 +1,6 @@
 apply plugin: 'kotlin'
 apply plugin: 'maven'
+apply plugin: 'signing'
 
 buildscript {
     ext.kotlin_version = '1.1.0'
@@ -20,10 +21,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-group = "com.marcinmoskala.math"
-archivesBaseName = "KotlinDiscreteMathToolkit"
-version = "1.0"
-
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
@@ -38,9 +35,19 @@ artifacts {
     archives javadocJar, sourcesJar
 }
 
+signing {
+    sign configurations.archives
+}
+
+group = "com.marcinmoskala"
+archivesBaseName = "DiscreteMathToolkit"
+version = "1.0-Final"
+
 uploadArchives {
     repositories {
         mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
                 authentication(userName: ossrhUsername, password: ossrhPassword)
             }
@@ -50,7 +57,7 @@ uploadArchives {
             }
 
             pom.project {
-                name 'KotlinDiscreteMathToolkit'
+                name 'DescreteMathToolkit'
                 packaging 'jar'
                 // optionally artifactId can be defined here
                 description 'Set of extensions for Kotlin that provides Discrete Math functionalities as an Kotlin extension functions.'
