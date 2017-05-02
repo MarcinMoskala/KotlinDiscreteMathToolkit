@@ -111,6 +111,8 @@ Maven:
 </dependency>
 ```
 
+Jar to download tohether with sources and javadoc can be found on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cmarcinmoskala).
+
 License
 -------
 
