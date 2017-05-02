@@ -75,10 +75,10 @@ P(n, k) - number of splits of n identical elements to k groups
 ```kotlin
 (1..n).toSet().splitsNumber(1) // 1
 (1..n).toSet().splitsNumber(n) // 1
-(1..3).toSet().splitsNumber(2) // 3
-(1..4).toSet().splitsNumber(2) // 7
-(1..5).toSet().splitsNumber(3) // 25
-(1..7).toSet().splitsNumber(4) // 350
+setOf(1, 2, 3).splitsNumber(2) // 3
+setOf(1, 2, 3, 4).splitsNumber(2) // 7
+setOf(1, 2, 3, 4, 5).splitsNumber(3) // 25
+setOf(1, 2, 3, 4, 5, 6, 7).splitsNumber(4) // 350
 setOf(1, 2, 3).splits(2) // {{{1, 2}, {3}},{{1, 3}, {2}},{{3, 2}, {1}}}
 ```
 
