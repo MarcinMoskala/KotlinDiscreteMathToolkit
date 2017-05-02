@@ -94,3 +94,19 @@ n.splitsNumber(n) // 1
 ```
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumberSplitTest.kt)
+
+# Install
+
+Gradle:
+```groovy
+compile "com.marcinmoskala:DiscreteMathToolkit:1.0-Final"
+```
+
+Maven:
+```
+<dependency>
+  <groupId>com.marcinmoskala</groupId>
+  <artifactId>DiscreteMathToolkit</artifactId>
+  <version>1.0-Final</version>
+</dependency>
+```
