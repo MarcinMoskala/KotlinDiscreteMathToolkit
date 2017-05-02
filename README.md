@@ -10,7 +10,7 @@ listOf(1, 2, 2).permutations() // {[1, 2, 2], [2, 1, 2], [2, 2, 1]}
 listOf(1, 2, 2).permutationsNumber() // 3
 ```
 
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/PermutationTest.kt)
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/PermutationTest.kt)
 
 # Combinations
 
@@ -23,7 +23,7 @@ setOf(1, 2, 3, 4).combinationsWithRepetitions(2) // [{1=2}, {1=1, 2=1}, {1=1, 3=
 setOf(1, 2, 3, 4).combinationsWithRepetitionsNumber(2) // 10
 ```
 
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/CombinationTest.kt) and [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/CombinationWithRepetitionTest.kt)
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/CombinationTest.kt) and [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/CombinationWithRepetitionTest.kt)
 
 # Powerset
 Powerset of any set S is the set of all subsets of S, including the empty set and S itself.
@@ -40,7 +40,7 @@ Product is the result of multiplying.
 listOf(10, 10, 10).product() // 1000
 ```
 
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/ProductTest.kt).
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/ProductTest.kt).
 
 # Factorial
 Factorian of n (n!) is a product of all positive integers less than or equal to n. 
@@ -50,7 +50,7 @@ Factorian of n (n!) is a product of all positive integers less than or equal to 
 10.factorial() // 3628800L
 20.factorial() // 2432902008176640000L
 ```
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/FactorialTest.kt).
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/FactorialTest.kt).
 
 # Numbers divisible and non-divisible by
 
@@ -65,7 +65,7 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 (1..1000).countDivisiveBy(2, 6, 13) // 538
 (1..1000).countDivisiveBy(3, 7, 11) // 480
 ```
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumbersDivisibleTest.kt).
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/NumbersDivisibleTest.kt).
 
 # Splits of sets and numbers
 In Descrete Math there are two functions used to count number of splits:
@@ -82,7 +82,7 @@ setOf(1, 2, 3, 4, 5, 6, 7).splitsNumber(4) // 350
 setOf(1, 2, 3).splits(2) // { { {1, 2}, {3} },{ {1, 3}, {2} },{ {3, 2}, {1} } }
 ```
 
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/SetSplitTest.kt)
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/SetSplitTest.kt)
 
 ```kotlin
 n.splitsNumber(1) // 1
@@ -93,7 +93,7 @@ n.splitsNumber(n) // 1
 13.splitsNumber(8) // 7
 ```
 
-More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/NumberSplitTest.kt)
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/NumberSplitTest.kt)
 
 # Install
 
