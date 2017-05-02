@@ -10,9 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static java.util.Collections.emptyList;
-import static java.util.Collections.emptySet;
-
 public class JavaTest {
 
     private static Set<Integer> smallSet = new HashSet<>();
