@@ -27,7 +27,7 @@ fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int
     combinationSize < 0 -> setOf()
     combinationSize == 0 -> setOf(mapOf())
     else -> combinationsWithRepetitions(combinationSize - 1)
-            .flatMap { subset -> this.map { subset + (it to (subset.getOrDefault(it, 0) + 1)) } }
+            .flatMap { subset -> this.map { subset + (it to (subset.getOrElse(it) { 0 } + 1)) } }
             .toSet()
 }
 

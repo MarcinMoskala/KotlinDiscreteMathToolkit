@@ -8,7 +8,7 @@ internal class ProductTest {
 
     @Test
     fun `Product of empty IntRange is 0`() {
-        assertEquals(0, (1..0).product())
+        assertEquals(0, (0..-1).product())
     }
 
     @Test
