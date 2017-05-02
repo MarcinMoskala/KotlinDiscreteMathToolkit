@@ -16,7 +16,7 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 
 ```kotlin
 val subsetSize = 3
-setOf(1, 2, 3, 4).combinations(subsetSize) // {{1, 2, 3}, {1, 2, 4}, {1, 4, 3}, {4, 2, 3}}
+setOf(1, 2, 3, 4).combinations(subsetSize) // { {1, 2, 3}, {1, 2, 4}, {1, 4, 3}, {4, 2, 3} }
 setOf(1, 2, 3, 4).combinationNumber(subsetSize) // 4
 
 setOf(1, 2, 3, 4).combinationsWithRepetitions(2) // [{1=2}, {1=1, 2=1}, {1=1, 3=1}, {1=1, 4=1}, {2=2}, {2=1, 3=1}, {2=1, 4=1}, {3=2}, {3=1, 4=1}, {4=2}]
@@ -29,7 +29,7 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 Powerset of any set S is the set of all subsets of S, including the empty set and S itself.
 
 ```kotlin
-setOf(1, 2, 3).powerset() // {{}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}}
+setOf(1, 2, 3).powerset() // { {}, {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3} }
 setOf(1, 2, 3).powersetSize() // 8
 ```
 # Product
@@ -79,7 +79,7 @@ setOf(1, 2, 3).splitsNumber(2) // 3
 setOf(1, 2, 3, 4).splitsNumber(2) // 7
 setOf(1, 2, 3, 4, 5).splitsNumber(3) // 25
 setOf(1, 2, 3, 4, 5, 6, 7).splitsNumber(4) // 350
-setOf(1, 2, 3).splits(2) // {{{1, 2}, {3}},{{1, 3}, {2}},{{3, 2}, {1}}}
+setOf(1, 2, 3).splits(2) // { { {1, 2}, {3} },{ {1, 3}, {2} },{ {3, 2}, {1} } }
 ```
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/com/marcinmoskala/math/tests/com/marcinmoskala/math/tests/SetSplitTest.kt)
