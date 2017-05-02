@@ -41,7 +41,7 @@ signing {
 
 group = "com.marcinmoskala"
 archivesBaseName = "DiscreteMathToolkit"
-version = "1.0-Final"
+version = "1.0.1"
 
 uploadArchives {
     repositories {
