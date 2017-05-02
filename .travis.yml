@@ -4,5 +4,7 @@ jdk:
   - oraclejdk8
   - openjdk7
 
+install: true
+
 script:
   - ./gradlew test
