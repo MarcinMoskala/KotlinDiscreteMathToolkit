@@ -1,3 +1,5 @@
+@file:JvmName("DiscreteMath")
+@file:JvmMultifileClass
 package com.marcinmoskala.math
 
 /**

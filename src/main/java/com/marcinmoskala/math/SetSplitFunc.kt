@@ -1,3 +1,5 @@
+@file:JvmName("DiscreteMath")
+@file:JvmMultifileClass
 package com.marcinmoskala.math
 
 // Stirling function - number of splits of n different elements to k groups
