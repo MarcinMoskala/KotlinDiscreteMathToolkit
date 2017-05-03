@@ -98,11 +98,23 @@ n.splitsNumber(n) // 1
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/NumberSplitTest.kt)
 
+# Java support
+
+Library is fully supporting usage from Java. All functions can be used as static function of DiscreteMath. For example:
+
+```java
+DiscreteMath.permutationsNumber(set)
+DiscreteMath.permutationsNumber(list)
+DiscreteMath.factorial(10) // 3628800L
+```
+
+Returned list and sets are Java standard lists and sets. More examples of Java usage [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/JavaTest.java).
+
 # Install
 
 Gradle:
 ```groovy
-compile "com.marcinmoskala:DiscreteMathToolkit:1.0-Final"
+compile "com.marcinmoskala:DiscreteMathToolkit:1.0.1"
 ```
 
 Maven:
@@ -110,7 +122,7 @@ Maven:
 <dependency>
   <groupId>com.marcinmoskala</groupId>
   <artifactId>DiscreteMathToolkit</artifactId>
-  <version>1.0-Final</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
