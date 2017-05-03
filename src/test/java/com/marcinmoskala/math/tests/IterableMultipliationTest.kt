@@ -35,4 +35,20 @@ internal class IterableMultipliationTest {
                 Triple("B", 2, 'b')
         ), listOf("A", "B") * listOf(1, 2) * listOf('a', 'b'))
     }
+
+    @Test fun `Size of result of list multipication is equeal to multiplication of list sizes`() {
+        val list1 = (1..5).toList()
+        val list2 = (1..10).toList()
+        val list3 = (1..25).toList()
+        assertEquals(list1.size * list2.size, (list1 * list2).size)
+        assertEquals(list1.size * list3.size, (list1 * list3).size)
+        assertEquals(list2.size * list3.size, (list2 * list3).size)
+        assertEquals(list1.size * list1.size, (list1 * list1).size)
+        assertEquals(list2.size * list2.size, (list2 * list2).size)
+        assertEquals(list3.size * list3.size, (list3 * list3).size)
+        assertEquals(list1.size * list2.size * list3.size, (list1 * list2 * list3).size)
+        assertEquals(list1.size * list1.size * list1.size, (list1 * list1 * list1).size)
+        assertEquals(list2.size * list2.size * list2.size, (list2 * list2 * list2).size)
+        assertEquals(list3.size * list3.size * list3.size, (list3 * list3 * list3).size)
+    }
 }
