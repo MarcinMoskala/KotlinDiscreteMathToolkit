@@ -1,4 +1,4 @@
-# KotlinDiscreteMathToolkit
+# DiscreteMathToolkit
 Set of extensions for Kotlin that provides Discrete Math functionalities as an Kotlin extension functions.
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.marcinmoskala/DiscreteMathToolkit/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.marcinmoskala/DiscreteMathToolkit)
