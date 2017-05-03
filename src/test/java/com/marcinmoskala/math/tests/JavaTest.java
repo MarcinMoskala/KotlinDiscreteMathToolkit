@@ -61,4 +61,9 @@ public class JavaTest {
     public void splitsOfNumberTest() {
         Assert.assertEquals(3, DiscreteMath.splitsNumber(7, 4));
     }
+
+    @Test
+    public void iterableMultiplicationTest() {
+        Assert.assertEquals(smallList.size() * smallList.size(), DiscreteMath.times(smallList, smallList).size());
+    }
 }

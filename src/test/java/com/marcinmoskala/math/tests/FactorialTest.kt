@@ -8,7 +8,7 @@ internal class FactorialTest {
 
     @Test fun `Test factorial results`() {
         val numberWithFactorial = mapOf(
-                0 to 0L,
+                0 to 1L,
                 1 to 1L,
                 2 to 2L,
                 3 to 6L,

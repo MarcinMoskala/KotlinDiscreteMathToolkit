@@ -8,7 +8,7 @@ package com.marcinmoskala.math
  */
 
 /* This function returns number of all permutations of elements from set. It is equal to n! where n is size of set. */
-fun <T> Set<T>.permutationsNumber(): Long = size.factorial()
+fun <T> Set<T>.permutationsNumber(): Long = if(isEmpty()) 0L else size.factorial()
 
 /* This function returns number of all permutations of elements from list. It is equal to n! / (n1! * n2! * ...) where n1, n2... are numbers elements that are the same. */
 fun <T> List<T>.permutationsNumber(): Long = if (size < 1) 0L else size.factorial() / groupBy { it }.map { it.value.size.factorial() }.product()
