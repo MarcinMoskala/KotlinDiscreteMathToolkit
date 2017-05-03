@@ -98,6 +98,23 @@ n.splitsNumber(n) // 1
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/NumberSplitTest.kt)
 
+# Iterable multiplication
+
+Multiplication of iterables returns iterable with pairs of each possible connections of elements from first and iterable:
+
+```kotlin
+listOf(1, 2) * listOf("A", "B") // [Pair(1, "A"), Pair(1, "B"), Pair(2, "A"), Pair(2, "B")] 
+listOf('a', 'b') * listOf(1, 2) * listOf("A", "B") 
+// [
+//    Triple('a', 1, "A"), Triple('a', 1, "B"), 
+//    Triple('a', 2, "A"), Triple('a', 2, "B"), 
+//    Triple('b', 1, "A"), Triple('b', 1, "B"), 
+//    Triple('b', b, "A"), Triple('b', 2, "B")
+// ] 
+```
+
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/IterableMultipliationTest.kt).
+
 # Java support
 
 Library is fully supporting usage from Java. All functions can be used as static function of DiscreteMath. For example:
@@ -126,7 +143,7 @@ Maven:
 </dependency>
 ```
 
-Jar to download tohether with sources and javadoc can be found on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cmarcinmoskala).
+Jar to download together with sources and javadoc can be found on [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cmarcinmoskala).
 
 License
 -------
