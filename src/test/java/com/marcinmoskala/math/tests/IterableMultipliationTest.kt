@@ -22,4 +22,17 @@ internal class IterableMultipliationTest {
     @Test fun `Simple list multiplication returns each combination of pairs from lists`() {
         assertEquals(listOf("A" to 1, "A" to 2, "B" to 1, "B" to 2), listOf("A", "B") * listOf(1, 2))
     }
+
+    @Test fun `Multiplication of tree lists is returning triple with each combination of each lists`() {
+        assertEquals(listOf(
+                Triple("A", 1, 'a'),
+                Triple("A", 1, 'b'),
+                Triple("A", 2, 'a'),
+                Triple("A", 2, 'b'),
+                Triple("B", 1, 'a'),
+                Triple("B", 1, 'b'),
+                Triple("B", 2, 'a'),
+                Triple("B", 2, 'b')
+        ), listOf("A", "B") * listOf(1, 2) * listOf('a', 'b'))
+    }
 }
