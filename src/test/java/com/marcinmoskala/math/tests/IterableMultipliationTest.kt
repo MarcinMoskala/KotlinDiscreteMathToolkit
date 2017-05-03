@@ -18,4 +18,8 @@ internal class IterableMultipliationTest {
         assertEquals(listOf("A" to 1, "A" to 2, "A" to 3), listOf("A") * listOf(1, 2, 3))
         assertEquals(listOf("A" to 1, "A" to 2, "A" to 2), listOf("A") * listOf(1, 2, 2))
     }
+
+    @Test fun `Simple list multiplication returns each combination of pairs from lists`() {
+        assertEquals(listOf("A" to 1, "A" to 2, "B" to 1, "B" to 2), listOf("A", "B") * listOf(1, 2))
+    }
 }
