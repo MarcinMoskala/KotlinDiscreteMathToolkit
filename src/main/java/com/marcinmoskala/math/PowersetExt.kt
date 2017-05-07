@@ -3,7 +3,7 @@
 package com.marcinmoskala.math
 
 fun <T> Collection<T>.powerset(): Set<Set<T>> = when {
-    set.isEmpty() -> setOf(setOf())
+    isEmpty() -> setOf(setOf())
     else -> drop(1).powerset().let { it + it.map { it + first() } }
 }
 
