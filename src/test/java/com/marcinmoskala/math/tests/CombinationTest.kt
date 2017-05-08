@@ -7,6 +7,20 @@ import org.junit.Test
 
 internal class CombinationTest {
 
+    @Test fun `combinations function is throwing error when asked for subsets of size smaller then 0`() {
+        val set = setOf(1, 2, 3, 4)
+        for (subsetSize in -10..-1) {
+            assertIsThrowingError { set.combinations(subsetSize) }
+        }
+    }
+
+    @Test fun `combinationsNumber function is throwing error when asked for subsets of size smaller then 0`() {
+        val set = setOf(1, 2, 3, 4)
+        for (subsetSize in -10..-1) {
+            assertIsThrowingError { set.combinationsNumber(subsetSize) }
+        }
+    }
+
     @Test fun `Test combinationsNumber for Sets with different sizes`() {
         val set = setOf(1, 2, 3, 4)
         val subsetSizeToCombinationNumber = mapOf(
@@ -40,5 +54,14 @@ internal class CombinationTest {
     @Test fun `Test combinations size and combinationsNumber correctness`() {
         val set = (1..6).toSet()
         (1..7).forEach { i -> assertEquals(set.combinationsNumber(i), set.combinations(i).size.toLong()) }
+    }
+
+    private fun <T> assertIsThrowingError(f: () -> T) {
+        try {
+            f()
+        } catch (r: Error) {
+            return
+        }
+        assert(false)
     }
 }
