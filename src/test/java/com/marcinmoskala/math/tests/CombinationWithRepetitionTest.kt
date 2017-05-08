@@ -7,6 +7,20 @@ import org.junit.Test
 
 internal class CombinationWithRepetitionTest {
 
+    @Test fun `combinationsWithRepetitions function is throwing error when asked for subsets of size smaller then 0`() {
+        val set = setOf(1, 2, 3, 4)
+        for (subsetSize in -10..-1) {
+            assertIsThrowingError { set.combinationsWithRepetitions(subsetSize) }
+        }
+    }
+
+    @Test fun `combinationsWithRepetitionsNumber function is throwing error when asked for subsets of size smaller then 0`() {
+        val set = setOf(1, 2, 3, 4)
+        for (subsetSize in -10..-1) {
+            assertIsThrowingError { set.combinationsWithRepetitionsNumber(subsetSize) }
+        }
+    }
+
     @Test fun `Test combinationsWithRepetitionsNumber for Sets with different sizes`() {
         val set = setOf(1, 2, 3)
         val subsetSizeToCombinationNumber = mapOf(

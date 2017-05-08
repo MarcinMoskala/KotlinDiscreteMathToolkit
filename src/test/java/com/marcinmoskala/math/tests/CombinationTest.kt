@@ -55,13 +55,4 @@ internal class CombinationTest {
         val set = (1..6).toSet()
         (1..7).forEach { i -> assertEquals(set.combinationsNumber(i), set.combinations(i).size.toLong()) }
     }
-
-    private fun <T> assertIsThrowingError(f: () -> T) {
-        try {
-            f()
-        } catch (r: Error) {
-            return
-        }
-        assert(false)
-    }
 }

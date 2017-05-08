@@ -27,6 +27,7 @@ fun <T> Set<T>.combinationsNumber(combinationSize: Int): Long = when {
 }
 
 fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int>> = when {
+    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is now equal to $combinationSize")
     combinationSize < 0 -> setOf()
     combinationSize == 0 -> setOf(mapOf())
     else -> combinationsWithRepetitions(combinationSize - 1)
@@ -35,6 +36,7 @@ fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int
 }
 
 fun <T> Set<T>.combinationsWithRepetitionsNumber(combinationSize: Int): Long = when {
+    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is now equal to $combinationSize")
     combinationSize == 0 -> 1
     combinationSize < 0 -> 0
     else -> (size + combinationSize - 1).factorial() / (combinationSize.factorial() * (size - 1).factorial())
