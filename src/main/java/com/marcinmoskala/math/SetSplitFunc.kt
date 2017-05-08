@@ -4,6 +4,7 @@ package com.marcinmoskala.math
 
 // Stirling function - number of splits of n different elements to k groups
 fun <T> Set<T>.splitsNumber(groupsNum: Int): Int = when {
+    groupsNum < 0 -> throw Error("groupsNum cannot be smaller then 0. It is now equal to $groupsNum")
     groupsNum == 0 -> if (isEmpty()) 1 else 0
     groupsNum == 1 || groupsNum == size -> 1
     groupsNum > size -> 0
@@ -12,6 +13,7 @@ fun <T> Set<T>.splitsNumber(groupsNum: Int): Int = when {
 
 // Takes set of elements and returns set of splits and each of them is set of sets
 fun <T> Set<T>.splits(groupsNum: Int): Set<Set<Set<T>>> = when {
+    groupsNum < 0 -> throw Error("groupsNum cannot be smaller then 0. It is now equal to $groupsNum")
     groupsNum == 0 -> if (isEmpty()) setOf(emptySet()) else emptySet()
     groupsNum == 1 -> setOf(setOf(this))
     groupsNum == size -> setOf(this.map { setOf(it) }.toSet())

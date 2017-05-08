@@ -9,6 +9,22 @@ internal class SetSplitTest {
 
     fun set(size: Int) = (1..size).toSet()
 
+    @Test fun `splitsNumber function for set is throwing error when asked for groupsNum of size smaller then 0`() {
+        for (groupsNum in -10..-1) {
+            for (num in 0..10) {
+                assertIsThrowingError { set(num).splitsNumber(groupsNum) }
+            }
+        }
+    }
+
+    @Test fun `splits function for set is throwing error when asked for groupsNum of size smaller then 0`() {
+        for (groupsNum in -10..-1) {
+            for (num in 0..10) {
+                assertIsThrowingError { set(num).splits(groupsNum) }
+            }
+        }
+    }
+
     @Test
     fun `n elements can be only one way splitted to one or n groups`() {
         for (n in 1..100) {
@@ -70,7 +86,7 @@ internal class SetSplitTest {
 
     @Test
     fun `Splits size and splitsNumber matches`() {
-        for(i in 1..5) for(j in 1..5) {
+        for (i in 1..5) for (j in 1..5) {
             val s = set(i)
             assertEquals(s.splitsNumber(j), s.splits(j).size)
         }
