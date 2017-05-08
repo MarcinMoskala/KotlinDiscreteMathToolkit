@@ -2,6 +2,7 @@ package com.marcinmoskala.math.tests
 
 import com.marcinmoskala.math.permutations
 import com.marcinmoskala.math.permutationsNumber
+import com.marcinmoskala.math.plusAt
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 
@@ -60,5 +61,13 @@ internal class PermutationTest {
     @Test fun `Check permutations number in allPermutations for bigger numbers`() {
         val set = (1..5).toSet()
         assertEquals(set.permutationsNumber(), set.permutations().size.toLong())
+    }
+
+    @Test fun `Simple plusAt tests`() {
+        val list = listOf(1,2,3)
+        assertIsThrowingError { list.plusAt(-1, 100) }
+        assertEquals(listOf(100, 1, 2, 3), list.plusAt(0, 100))
+        assertEquals(listOf(1, 100, 2, 3), list.plusAt(1, 100))
+        assertEquals(listOf(1, 2, 3, 100), list.plusAt(3, 100))
     }
 }

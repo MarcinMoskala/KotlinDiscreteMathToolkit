@@ -28,7 +28,7 @@ fun <T> List<T>.permutations(): Set<List<T>> = when {
     }
 }
 
-private fun <T> List<T>.plusAt(index: Int, element: T): List<T> = when {
+internal fun <T> List<T>.plusAt(index: Int, element: T): List<T> = when {
     index !in 0..size -> throw Error("Cannot put at index $index because size is $size")
     index == 0 -> listOf(element) + this
     index == size -> this + element
