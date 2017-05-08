@@ -11,7 +11,7 @@ package com.marcinmoskala.math
  * extension function for set under this name
  */
 fun <T> Set<T>.combinations(combinationSize: Int): Set<Set<T>> = when {
-    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is now equal to $combinationSize")
+    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is equal to $combinationSize")
     combinationSize == 0 -> setOf(setOf())
     combinationSize >= size -> setOf(toSet())
     else -> powerset()
@@ -20,15 +20,13 @@ fun <T> Set<T>.combinations(combinationSize: Int): Set<Set<T>> = when {
 }
 
 fun <T> Set<T>.combinationsNumber(combinationSize: Int): Long = when {
-    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is now equal to $combinationSize")
+    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is equal to $combinationSize")
     combinationSize >= size || combinationSize == 0 -> 1
-    combinationSize < 0 -> 0
     else -> size.factorial() / (combinationSize.factorial() * (size - combinationSize).factorial())
 }
 
 fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int>> = when {
-    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is now equal to $combinationSize")
-    combinationSize < 0 -> setOf()
+    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is equal to $combinationSize")
     combinationSize == 0 -> setOf(mapOf())
     else -> combinationsWithRepetitions(combinationSize - 1)
             .flatMap { subset -> this.map { subset + (it to (subset.getOrElse(it) { 0 } + 1)) } }
@@ -36,8 +34,7 @@ fun <T> Set<T>.combinationsWithRepetitions(combinationSize: Int): Set<Map<T, Int
 }
 
 fun <T> Set<T>.combinationsWithRepetitionsNumber(combinationSize: Int): Long = when {
-    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is now equal to $combinationSize")
+    combinationSize < 0 -> throw Error("combinationSize cannot be smaller then 0. It is equal to $combinationSize")
     combinationSize == 0 -> 1
-    combinationSize < 0 -> 0
     else -> (size + combinationSize - 1).factorial() / (combinationSize.factorial() * (size - 1).factorial())
 }
