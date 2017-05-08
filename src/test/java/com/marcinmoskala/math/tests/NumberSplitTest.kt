@@ -6,6 +6,14 @@ import org.junit.Test
 
 internal class NumberSplitTest {
 
+    @Test fun `splitsNumber function for number is throwing error when asked for groupsNum of size smaller then 0`() {
+        for (groupsNum in -10..-1) {
+            for (num in 0..10) {
+                assertIsThrowingError { num.splitsNumber(groupsNum) }
+            }
+        }
+    }
+
     @Test
     fun `n number can be only one way splitted to one or n components`() {
         for (n in 1..100) {
