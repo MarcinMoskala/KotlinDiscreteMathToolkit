@@ -7,7 +7,7 @@ jdk:
 install: true
 
 script:
-  - ./gradlew test
+  - ./gradlew check
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
