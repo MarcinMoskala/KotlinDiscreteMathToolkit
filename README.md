@@ -4,6 +4,7 @@ Set of extensions for Kotlin that provides Discrete Math functionalities as an K
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.marcinmoskala/DiscreteMathToolkit/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.marcinmoskala/DiscreteMathToolkit)
 [![Build Status](https://travis-ci.org/MarcinMoskala/KotlinDiscreteMathToolkit.svg?branch=master)](https://travis-ci.org/MarcinMoskala/KotlinDiscreteMathToolkit)
 [![codecov](https://codecov.io/gh/MarcinMoskala/KotlinDiscreteMathToolkit/branch/master/graph/badge.svg)](https://codecov.io/gh/MarcinMoskala/KotlinDiscreteMathToolkit)
+[![codebeat badge](https://codebeat.co/badges/70bb9b0e-a47e-477a-933d-adc7220ae926)](https://codebeat.co/projects/github-com-marcinmoskala-kotlindiscretemathtoolkit-master)
 
 # Permutations
 
