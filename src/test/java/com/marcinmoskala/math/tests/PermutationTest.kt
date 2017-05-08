@@ -9,7 +9,7 @@ internal class PermutationTest {
 
     @Test fun `Test permutation numbers for Sets with different sizes`() {
         val setSizeToPermutations = mapOf(
-                0 to 0L,
+                0 to 1L,
                 1 to 1L,
                 2 to 2L,
                 3 to 6L,
@@ -23,7 +23,7 @@ internal class PermutationTest {
 
     @Test fun `Test permutation numbers for Lists with different sizes and different elements`() {
         val listSizeToPermutations = mapOf(
-                0 to 0L,
+                0 to 1L,
                 1 to 1L,
                 2 to 2L,
                 3 to 6L,
