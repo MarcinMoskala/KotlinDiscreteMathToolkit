@@ -19,9 +19,8 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 # Combinations
 
 ```kotlin
-val subsetSize = 3
-setOf(1, 2, 3, 4).combinations(subsetSize) // { {1, 2, 3}, {1, 2, 4}, {1, 4, 3}, {4, 2, 3} }
-setOf(1, 2, 3, 4).combinationNumber(subsetSize) // 4
+setOf(1, 2, 3, 4).combinations(3) // { {1, 2, 3}, {1, 2, 4}, {1, 4, 3}, {4, 2, 3} }
+setOf(1, 2, 3, 4).combinationNumber(3) // 4
 
 setOf(1, 2, 3, 4).combinationsWithRepetitions(2) // [{1=2}, {1=1, 2=1}, {1=1, 3=1}, {1=1, 4=1}, {2=2}, {2=1, 3=1}, {2=1, 4=1}, {3=2}, {3=1, 4=1}, {4=2}]
 setOf(1, 2, 3, 4).combinationsWithRepetitionsNumber(2) // 10
@@ -104,13 +103,14 @@ More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/
 Multiplication of iterables returns iterable with pairs of each possible connections of elements from first and iterable:
 
 ```kotlin
-listOf(1, 2) * listOf("A", "B") // [Pair(1, "A"), Pair(1, "B"), Pair(2, "A"), Pair(2, "B")] 
-listOf('a', 'b') * listOf(1, 2) * listOf("A", "B") 
+listOf(1, 2) * listOf("A", "B") // returns List<Pair<Int, String>>
+// [(1, "A"), (1, "B"), (2, "A"), (2, "B")] 
+listOf('a', 'b') * listOf(1, 2) * listOf("A", "B") // returns List<Triple<Char, Int, String>>
 // [
-//    Triple('a', 1, "A"), Triple('a', 1, "B"), 
-//    Triple('a', 2, "A"), Triple('a', 2, "B"), 
-//    Triple('b', 1, "A"), Triple('b', 1, "B"), 
-//    Triple('b', b, "A"), Triple('b', 2, "B")
+//    ('a', 1, "A"), ('a', 1, "B"), 
+//    ('a', 2, "A"), ('a', 2, "B"), 
+//    ('b', 1, "A"), ('b', 1, "B"), 
+//    ('b', b, "A"), ('b', 2, "B")
 // ] 
 ```
 
