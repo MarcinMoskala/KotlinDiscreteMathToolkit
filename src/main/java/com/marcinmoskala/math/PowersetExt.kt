@@ -2,9 +2,11 @@
 @file:JvmMultifileClass
 package com.marcinmoskala.math
 
-fun <T> Collection<T>.powerset(): Set<Set<T>> = when {
-    isEmpty() -> setOf(setOf())
-    else -> drop(1).powerset().let { it + it.map { it + first() } }
+fun <T> Collection<T>.powerset(): Set<Set<T>> = powerset(this, setOf(setOf()))
+
+private tailrec fun <T> powerset(left: Collection<T>, acc: Set<Set<T>>): Set<Set<T>> = when {
+    left.isEmpty() -> acc
+    else ->powerset(left.drop(1), acc + acc.map { it + left.first() })
 }
 
 val <T> Collection<T>.powersetSize: Int
