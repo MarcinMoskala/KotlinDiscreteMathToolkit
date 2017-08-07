@@ -133,7 +133,7 @@ Returned list and sets are Java standard lists and sets. More examples of Java u
 
 Gradle:
 ```groovy
-compile "com.marcinmoskala:DiscreteMathToolkit:1.0.2"
+compile "com.marcinmoskala:DiscreteMathToolkit:1.0.3"
 ```
 
 Maven:
@@ -141,7 +141,7 @@ Maven:
 <dependency>
   <groupId>com.marcinmoskala</groupId>
   <artifactId>DiscreteMathToolkit</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
