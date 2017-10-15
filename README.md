@@ -5,6 +5,7 @@ Set of extensions for Kotlin that provides Discrete Math functionalities as an K
 [![Build Status](https://travis-ci.org/MarcinMoskala/KotlinDiscreteMathToolkit.svg?branch=master)](https://travis-ci.org/MarcinMoskala/KotlinDiscreteMathToolkit)
 [![codecov](https://codecov.io/gh/MarcinMoskala/KotlinDiscreteMathToolkit/branch/master/graph/badge.svg)](https://codecov.io/gh/MarcinMoskala/KotlinDiscreteMathToolkit)
 [![codebeat badge](https://codebeat.co/badges/70bb9b0e-a47e-477a-933d-adc7220ae926)](https://codebeat.co/projects/github-com-marcinmoskala-kotlindiscretemathtoolkit-master)
+[![Analytics](https://ga-beacon.appspot.com/UA-92159206-7/main-page?pixel)](https://github.com/MarcinMoskala/ArcSeekBar)
 
 To stay current with news about library [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label=Follow%20%40marcinmoskala)](https://twitter.com/marcinmoskala?ref_src=twsrc%5Etfw)
 
