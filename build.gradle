@@ -4,7 +4,7 @@ apply plugin: 'signing'
 apply plugin: "jacoco"
 
 buildscript {
-    ext.kotlin_version = '1.1.0'
+    ext.kotlin_version = '1.2.0'
     repositories {
         mavenCentral()
     }
@@ -51,7 +51,7 @@ signing {
 
 group = "com.marcinmoskala"
 archivesBaseName = "DiscreteMathToolkit"
-version = "1.0.3"
+version = "1.0.4"
 
 uploadArchives {
     repositories {
