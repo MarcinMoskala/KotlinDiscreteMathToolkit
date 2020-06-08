@@ -2,8 +2,8 @@ package com.marcinmoskala.math.tests
 
 import com.marcinmoskala.math.combinationsWithRepetitions
 import com.marcinmoskala.math.combinationsWithRepetitionsNumber
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class CombinationWithRepetitionTest {
 

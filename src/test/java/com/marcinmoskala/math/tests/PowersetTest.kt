@@ -3,8 +3,8 @@ package com.marcinmoskala.math.tests
 import com.marcinmoskala.math.pow
 import com.marcinmoskala.math.powerset
 import com.marcinmoskala.math.powersetSize
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class PowersetTest {
 

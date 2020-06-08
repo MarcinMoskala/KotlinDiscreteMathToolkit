@@ -1,9 +1,9 @@
 package com.marcinmoskala.math.tests
 
 import com.marcinmoskala.math.pow
-import junit.framework.Assert.assertEquals
-import junit.framework.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 @Suppress("USELESS_IS_CHECK")
 internal class PowerTest {

@@ -3,8 +3,8 @@ package com.marcinmoskala.math.tests
 import com.marcinmoskala.math.permutations
 import com.marcinmoskala.math.permutationsNumber
 import com.marcinmoskala.math.plusAt
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class PermutationTest {
 

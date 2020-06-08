@@ -2,12 +2,13 @@ package com.marcinmoskala.math.tests
 
 import com.marcinmoskala.math.combinations
 import com.marcinmoskala.math.combinationsNumber
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class CombinationTest {
 
-    @Test fun `combinations function is throwing error when asked for subsets of size smaller then 0`() {
+    @Test
+    fun `combinations function is throwing error when asked for subsets of size smaller then 0`() {
         val set = setOf(1, 2, 3, 4)
         for (subsetSize in -10..-1) {
             assertIsThrowingError { set.combinations(subsetSize) }

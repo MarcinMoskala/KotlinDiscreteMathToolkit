@@ -2,8 +2,8 @@ package com.marcinmoskala.math.tests
 
 import com.marcinmoskala.math.splits
 import com.marcinmoskala.math.splitsNumber
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class SetSplitTest {
 
