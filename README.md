@@ -120,6 +120,38 @@ listOf('a', 'b') * listOf(1, 2) * listOf("A", "B") // returns List<Triple<Char, 
 
 More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/IterableMultipliationTest.kt).
 
+# Cartesian product of lists
+
+Similar to iterable multiplication but produces sequence of lists:
+
+```kotlin
+listOf('A', 'B', 'C', D).cartesianProduct(listOf('x', 'y')) // returns List<List<Char>>
+// [
+//     ['A', 'x'],
+//     ['A', 'y'],
+//     ['B', 'x'],
+//     ['B', 'y'],
+//     ['C', 'x'],
+//     ['C', 'y'],
+//     ['D', 'x'],
+//     ['D', 'y']
+// ]
+listOf(0, 1).cartesianProduct(repeat = 2) // returns List<List<Int>>
+// [
+//     [0, 0],
+//     [0, 1],
+//     [1, 0],
+//     [1, 1]
+// ]
+listOf(1, 2).cartesianProduct(listOf("ABC")) // returns List<List<Any>>
+// [
+//     [1, "ABC"],
+//     [2, "ABC"]
+// ]
+```
+
+More examples [here](https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit/blob/master/src/test/java/com/marcinmoskala/math/tests/CartesianProductTest.kt).
+
 # Java support
 
 Library is fully supporting usage from Java. All functions can be used as static function of DiscreteMath. For example:
