@@ -54,11 +54,4 @@ internal class CartesianProductPropertyTest : StringSpec({
                     list.flatten().toSet()
         }
     }
-
-//    TODO:
-//    - test "A","B" * 1,2 (heterogenous lists)
-//    - make sure prop test run on build
-//    - rewrite implementation to not use deck
-//    - README
-
 })
