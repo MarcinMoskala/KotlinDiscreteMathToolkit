@@ -9,8 +9,14 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
 
-@ExperimentalStdlibApi
 internal class CartesianProductTest {
+
+    @Test
+    fun `cartesian product with size more than MAX_INT throws`() {
+        assertThrows(IllegalArgumentException::class.java) {
+            listOf(1, 2, 3, 5, 6, 7, 8, 9, 0).cartesianProduct(10).toList()
+        }
+    }
 
     @Test
     fun `cartesian product with repeat less than 1 throws`() {

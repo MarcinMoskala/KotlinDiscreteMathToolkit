@@ -8,7 +8,6 @@ import io.kotest.property.arbitrary.list
 import io.kotest.property.forAll
 
 
-@ExperimentalStdlibApi
 internal class CartesianProductPropertyTest : StringSpec({
 
     val intListGen = Arb.list(
@@ -20,7 +19,6 @@ internal class CartesianProductPropertyTest : StringSpec({
             intListGen,
             2..5
     )
-
 
     "output product size is product of sizes of inputs" {
         forAll(listOfIntListsGen) { list ->
