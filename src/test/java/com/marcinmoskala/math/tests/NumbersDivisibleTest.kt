@@ -4,8 +4,8 @@ import com.marcinmoskala.math.countDivisiveBy
 import com.marcinmoskala.math.countNonDivisiveBy
 import com.marcinmoskala.math.divisiveBy
 import com.marcinmoskala.math.nonDivisiveBy
-import junit.framework.Assert.assertEquals
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 internal class NumbersDivisibleTest {
 
