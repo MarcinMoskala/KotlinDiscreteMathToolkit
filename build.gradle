@@ -1,7 +1,13 @@
 apply plugin: 'kotlin'
-apply plugin: 'maven'
-apply plugin: 'signing'
+if (project.hasProperty("signing.keyId")) {
+    apply plugin: 'signing'
+}
+apply plugin: 'maven-publish'
 apply plugin: "jacoco"
+
+repositories {
+    mavenCentral()
+}
 
 buildscript {
     ext.kotlin_version = '1.3.72'
@@ -24,10 +30,6 @@ jacocoTestReport {
 
 check.dependsOn jacocoTestReport
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
@@ -36,98 +38,132 @@ dependencies {
     testImplementation "io.kotest:kotest-property-jvm:$kotest_version"
 }
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
+// Publishing
+
+test {
+    // show standard out and standard error of the test JVM(s) on the console
+    testLogging.showStandardStreams = true
 }
 
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
+task sourceJar(type: Jar) {
+    classifier "sources"
+    from sourceSets.main.allJava
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier "javadoc"
+    from javadoc.destinationDir
 }
 
 artifacts {
-    archives javadocJar, sourcesJar
+    archives sourceJar, javadocJar
 }
 
 signing {
     sign configurations.archives
 }
 
-group = "com.marcinmoskala"
-archivesBaseName = "DiscreteMathToolkit"
-version = "1.0.4"
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            customizePom(pom)
 
-uploadArchives {
+            groupId "com.marcinmoskala"
+            artifactId "DiscreteMathToolkit"
+            version '1.0.5'
+
+            from components.java
+
+            // create the sign pom artifact
+            pom.withXml {
+                def pomFile = file("${project.buildDir}/generated-pom.xml")
+                writeTo(pomFile)
+                def pomAscFile = signing.sign(pomFile).signatureFiles[0]
+                artifact(pomAscFile) {
+                    classifier = null
+                    extension = 'pom.asc'
+                }
+            }
+
+            artifact(sourceJar) {
+                classifier = 'sources'
+            }
+            artifact(javadocJar) {
+                classifier = 'javadoc'
+            }
+
+            // create the signed artifacts
+            project.tasks.signArchives.signatureFiles.each {
+                artifact(it) {
+                    def matcher = it.file =~ /-(sources|javadoc)\.jar\.asc$/
+                    if (matcher.find()) {
+                        classifier = matcher.group(1)
+                    } else {
+                        classifier = null
+                    }
+                    extension = 'jar.asc'
+                }
+            }
+        }
+    }
     repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: hasProperty('ossrhUsername') ? ossrhUsername : '', password: hasProperty('ossrhPassword') ? ossrhPassword : '')
+        maven {
+            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
             }
+        }
+    }
+}
 
-            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: hasProperty('ossrhUsername') ? ossrhUsername : '', password: hasProperty('ossrhPassword') ? ossrhPassword : '')
-            }
+def customizePom(pom) {
+    pom.withXml {
+        def root = asNode()
 
-            pom.project {
-                name 'DescreteMathToolkit'
-                packaging 'jar'
-                // optionally artifactId can be defined here
-                description 'Set of extensions for Kotlin that provides Discrete Math functionalities as an Kotlin extension functions.'
+        root.dependencies.removeAll { dep ->
+            dep.scope == "test"
+        }
+
+        root.children().last() + {
+            resolveStrategy = Closure.DELEGATE_FIRST
+
+            name 'DescreteMathToolkit'
+            description 'Set of extensions for Kotlin that provides Discrete Math functionalities as an Kotlin extension functions.'
+            url 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+
+            scm {
+                connection 'scm:https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+                developerConnection 'scm:https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
                 url 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+            }
 
-                scm {
-                    connection 'scm:https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
-                    developerConnection 'scm:https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
-                    url 'https://github.com/MarcinMoskala/KotlinDiscreteMathToolkit'
+            licenses {
+                license {
+                    name 'The Apache License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                 }
+            }
 
-                licenses {
-                    license {
-                        name 'The Apache License, Version 2.0'
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-
-                developers {
-                    developer {
-                        id 'MarcinMoskala'
-                        name 'Marcin Moskala'
-                        email 'marcinmoskala@gmail.com'
-                    }
+            developers {
+                developer {
+                    id 'MarcinMoskala'
+                    name 'Marcin Moskala'
+                    email 'marcinmoskala@gmail.com'
                 }
             }
         }
     }
 }
 
-tasks.withType(Test) {
-    useJUnitPlatform()
-    testLogging {
-        // set options for log level LIFECYCLE
-        events "passed", "skipped", "failed", "standardOut"
-        showExceptions true
-        exceptionFormat "full"
-        showCauses true
-        showStackTraces true
-
-        // set options for log level DEBUG and INFO
-        debug {
-            events "started", "passed", "skipped", "failed", "standardOut", "standardError"
-            exceptionFormat "full"
-        }
-        info.events = debug.events
-        info.exceptionFormat = debug.exceptionFormat
-
-        afterSuite { desc, result ->
-            if (!desc.parent) { // will match the outermost suite
-                def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
-                def startItem = '|  ', endItem = '  |'
-                def repeatLength = startItem.length() + output.length() + endItem.length()
-                println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
-            }
-        }
+model {
+    tasks.generatePomFileForMavenJavaPublication {
+        destination = file("$buildDir/generated-pom.xml")
+    }
+    tasks.publishMavenJavaPublicationToMavenLocal {
+        dependsOn project.tasks.signArchives
+    }
+    tasks.publishMavenJavaPublicationToMavenRepository {
+        dependsOn project.tasks.signArchives
     }
 }
